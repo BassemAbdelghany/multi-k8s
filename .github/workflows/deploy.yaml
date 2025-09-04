@@ -11,8 +11,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      issues: write
+      id-token: write # Required for OIDC authentication
+      contents: read # Or write, depending on your needs
     steps:
       - uses: actions/checkout@v3
 
