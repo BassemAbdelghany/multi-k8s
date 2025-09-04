@@ -26,13 +26,14 @@ jobs:
         uses: 'google-github-actions/auth@v3'
         with:
           #credentials_json: '${{ secrets.GKE_SA_KEY }}'
+          project_id: 'multi-k8s-471013'
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.SERVICE_ACCOUNT_EMAIL }}'
 
       - name: Set Project
         uses: google-github-actions/setup-gcloud@v3
         with:
-          project_id: multi-k8s-471013
+          project_id: 'multi-k8s-471013'
 
       - name: Auth
         run: |-
@@ -41,8 +42,8 @@ jobs:
       - name: Get Credentials
         uses: google-github-actions/get-gke-credentials@v3
         with:
-          cluster_name: multi-cluster
-          location: europe-central2-a
+          cluster_name: 'multi-cluster'
+          location: 'europe-central2-a'
 
       - name: Build
         run: |-
