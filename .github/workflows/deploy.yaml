@@ -10,7 +10,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment: sandbox
+    permissions:
+      contents: read
+      issues: write
     steps:
       - uses: actions/checkout@v3
 
