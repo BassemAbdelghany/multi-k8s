@@ -22,11 +22,17 @@ jobs:
           docker build -t bhassan310/react-test -f ./client/Dockerfile.dev ./client
           docker run -e CI=true bhassan310/react-test npm test
 
-      - name: Set Service Key
+      - id: 'auth'
         uses: 'google-github-actions/auth@v3'
         with:
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
           service_account: '${{ secrets.SERVICE_ACCOUNT_EMAIL }}'
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v3'
+
+      - name: 'Use gcloud CLI'
+        run: 'gcloud info'
 
       - name: Set Project
         uses: google-github-actions/setup-gcloud@v3
